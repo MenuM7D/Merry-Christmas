@@ -1,5 +1,5 @@
 // عرض رسالة الترحيب
-const welcomeMessage = document.getElementById('welcome-message');
+const welcomeMessageWords = document.querySelectorAll('.word');
 const lightsContainer = document.body;
 
 // إنشاء الأنوار المتساقطة
@@ -15,18 +15,21 @@ function createLight() {
   }, 5000);
 }
 
-// عرض رسالة الترحيب مع الأنوار
+// عرض الكلمات تدريجيًا
 window.addEventListener('load', () => {
-  welcomeMessage.classList.remove('hidden');
+  let delay = 0;
+  welcomeMessageWords.forEach((word, index) => {
+    word.style.animationDelay = `${delay}s`;
+    delay += 1.5; // تأخير بين الكلمات
+  });
 
   // تشغيل الأنوار
   const lightInterval = setInterval(createLight, 200);
 
-  // إخفاء الرسالة والأنوار بعد 5 ثوانٍ
+  // إخفاء الأنوار بعد 5 ثوانٍ
   setTimeout(() => {
-    welcomeMessage.classList.add('hidden');
     clearInterval(lightInterval);
-  }, 5000);
+  }, 7000);
 });
 // تشغيل الموسيقى عند تدمير رجل الثلج
 const music = document.getElementById('background-music');

@@ -16,21 +16,32 @@ function createLight() {
   }, 5000);
 }
 
-// عرض الكلمات تدريجيًا
+// عرض الكلمات تدريجيًا واختفاؤها تدريجيًا
 window.addEventListener('load', () => {
   let delay = 0;
   welcomeMessageWords.forEach((word, index) => {
     word.style.animationDelay = `${delay}s`;
+    word.classList.add('fadeIn'); // إضافة تأثير الظهور
     delay += 1.5; // تأخير بين الكلمات
   });
 
   // تشغيل الأنوار
   const lightInterval = setInterval(createLight, 200);
 
-  // إخفاء الرسالة بعد 7 ثوانٍ
+  // إخفاء الكلمات تدريجيًا بعد 7 ثوانٍ
   setTimeout(() => {
-    welcomeMessage.classList.add('hidden');
-    clearInterval(lightInterval);
+    let fadeOutDelay = 0;
+    welcomeMessageWords.forEach((word) => {
+      word.style.animationDelay = `${fadeOutDelay}s`;
+      word.classList.add('fadeOut'); // إضافة تأثير الاختفاء
+      fadeOutDelay += 1.5; // تأخير بين الكلمات
+    });
+
+    // إخفاء الرسالة بعد الانتهاء من الاختفاء
+    setTimeout(() => {
+      welcomeMessage.classList.add('hidden');
+      clearInterval(lightInterval);
+    }, fadeOutDelay * 1000);
   }, 7000);
 });
 

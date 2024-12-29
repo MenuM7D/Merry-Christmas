@@ -79,7 +79,7 @@ snowman.addEventListener('click', () => {
   }, 500);
 
   // إذا وصلت النقرات إلى 5، اختفِ وأظهر الرسالة وشغّل الموسيقى
-  if (clicks >= 5) {
+  if (clicks >= 1) {
     snowman.style.display = 'none';
     greeting.classList.remove('hidden');
     music.play(); // تشغيل الأغنية

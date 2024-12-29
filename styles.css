@@ -19,6 +19,7 @@ body {
   color: #fff;
   text-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 30px #ff0, 0 0 40px #ffd700, 0 0 50px #ffd700, 0 0 60px #ffd700;
   z-index: 1000;
+  animation: fadeIn 1s ease-in-out;
 }
 
 /* الكلمات تظهر تدريجيًا */
@@ -28,12 +29,7 @@ body {
   animation: fadeInWord 1s ease-in-out forwards;
 }
 
-/* الكلمات تختفي تدريجيًا */
-.word.fade-out {
-  animation: fadeOutWord 1.5s ease-in-out forwards;
-}
-
-/* تأثير النصوص */
+/* تأثير النص */
 @keyframes fadeInWord {
   from {
     opacity: 0;
@@ -45,58 +41,11 @@ body {
   }
 }
 
-@keyframes fadeOutWord {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
+/* اختفاء الرسالة */
+.hidden {
+  display: none;
 }
 
-/* تصميم الفراشات باستخدام CSS */
-.butterfly {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, #ff69b4, #ff1493, #ff4500);
-  box-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
-  animation: fly 5s ease-in-out infinite, fadeOut 3s ease-in-out forwards;
-  z-index: 500;
-  opacity: 0;
-}
-
-/* حركات الطيران */
-@keyframes fly {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(50px, -80px) scale(1.2);
-  }
-  50% {
-    transform: translate(-80px, 50px) scale(0.8);
-  }
-  75% {
-    transform: translate(80px, -30px) scale(1.1);
-  }
-  100% {
-    transform: translate(-50px, 80px) scale(1);
-  }
-}
-
-/* تأثير الاختفاء */
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
 /* الحاوية الرئيسية */
 .container {
   position: relative;

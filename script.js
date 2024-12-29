@@ -3,34 +3,37 @@ const welcomeMessage = document.getElementById('welcome-message');
 const welcomeMessageWords = document.querySelectorAll('.word');
 const lightsContainer = document.body;
 
-// إنشاء الفراشات
-// إنشاء فراشة جديدة
-function createButterfly() {
-  const butterfly = document.createElement('div');
-  butterfly.classList.add('butterfly');
-  butterfly.style.left = Math.random() * 100 + 'vw'; // تحديد مكان عشوائي أفقياً
-  butterfly.style.top = Math.random() * 100 + 'vh'; // تحديد مكان عشوائي عمودياً
-  butterfly.style.animationDuration = Math.random() * 3 + 3 + 's'; // وقت عشوائي للطيران
+// إنشاء الأنوار المتساقطة
+function createLight() {
+  const light = document.createElement('div');
+  light.classList.add('light');
+  light.style.left = Math.random() * 100 + 'vw';
+  light.style.animationDuration = Math.random() * 3 + 2 + 's';
+  lightsContainer.appendChild(light);
 
-  document.body.appendChild(butterfly);
+  setTimeout(() => {
+    light.remove();
+  }, 5000);
+}
 
-  // حذف الفراشة بعد انتهاء تأثير الطيران
-  butterfly.addEventListener('animationend', () => {
-    butterfly.remove();
+// عرض الكلمات تدريجيًا
+window.addEventListener('load', () => {
+  let delay = 0;
+  welcomeMessageWords.forEach((word, index) => {
+    word.style.animationDelay = `${delay}s`;
+    delay += 1.5; // تأخير بين الكلمات
   });
-}
 
-// إنشاء مجموعة من الفراشات
-function releaseButterflies(count = 20) {
-  for (let i = 0; i < count; i++) {
-    createButterfly();
-  }
-}
+  // تشغيل الأنوار
+  const lightInterval = setInterval(createLight, 200);
 
-// عرض الفراشات بعد اختفاء النصوص
-setTimeout(() => {
-  releaseButterflies();
-}, 7000); // بعد انتهاء النصوص بـ 7 ثوانٍ
+  // إخفاء الرسالة بعد 7 ثوانٍ
+  setTimeout(() => {
+    welcomeMessage.classList.add('hidden');
+    clearInterval(lightInterval);
+  }, 7000);
+});
+
 // تشغيل الموسيقى عند تدمير رجل الثلج
 const music = document.getElementById('background-music');
 music.volume = 0.3;

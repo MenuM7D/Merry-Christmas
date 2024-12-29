@@ -40,6 +40,7 @@ body {
   display: none;
 }
 
+/* إعدادات الرسالة المنبثقة */
 .greeting {
   position: absolute;
   top: 50%;
@@ -48,18 +49,32 @@ body {
   background: rgba(255, 255, 255, 0.9);
   border: 2px solid #d62828;
   border-radius: 15px;
-  padding: 30px;
+  padding: 20px; /* تقليل الحواف */
   text-align: center;
   animation: fadeIn 2s ease-out;
+  max-height: 80vh; /* أقصى ارتفاع بالنسبة لشاشة الهاتف */
+  width: 90%; /* ملائمة للشاشات الصغيرة */
+  overflow-y: auto; /* تمكين التمرير العمودي */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .greeting h1 {
-  font-size: 2.5rem;
+  font-size: 1.5rem; /* تصغير حجم النص */
   color: #d62828;
   text-shadow: 0 0 10px #d62828;
   animation: textGlow 1.5s infinite alternate;
 }
 
+/* تحسين النص في الهواتف */
+@media (max-width: 768px) {
+  .greeting h1 {
+    font-size: 1.2rem; /* خط أصغر لشاشات أصغر */
+  }
+  .greeting {
+    padding: 15px; /* تقليل الحواف أكثر */
+    max-height: 70vh; /* تقليل الارتفاع لأجهزة أصغر */
+  }
+}
 /* تأثيرات الرسالة */
 @keyframes fadeIn {
   from {

@@ -1,4 +1,4 @@
-/* ضبط الخلفية العامة */
+/* إعدادات عامة */
 body {
   margin: 0;
   padding: 0;
@@ -20,19 +20,19 @@ body {
 
 /* تنسيق رجل الثلج */
 .snowman {
-  width: 50vw; /* العرض يشغل 50% من عرض الشاشة */
-  height: auto; /* الحفاظ على نسبة الأبعاد */
   position: absolute;
-  top: 50%; /* تحديد الموضع من الأعلى */
-  left: 50%; /* تحديد الموضع من اليسار */
-  transform: translate(-50%, -50%); /* لضبط المركز */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35vw; /* العرض 35% من عرض الشاشة */
+  height: auto; /* الحفاظ على النسبة */
   cursor: pointer;
   animation: bounce 2s infinite;
 }
 
 .snowman img {
-  width: 100%; /* ضبط عرض الصورة مع الحاوية */
-  height: auto; /* الحفاظ على نسبة الأبعاد */
+  width: 100%;
+  height: auto;
 }
 
 /* الرسالة */
@@ -45,17 +45,18 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.8);
-  border: 2px solid #000;
-  border-radius: 10px;
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #d62828;
+  border-radius: 15px;
+  padding: 30px;
   text-align: center;
   animation: fadeIn 2s ease-out;
 }
 
 .greeting h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #d62828;
+  text-shadow: 0 0 10px #d62828;
   animation: textGlow 1.5s infinite alternate;
 }
 
@@ -71,17 +72,17 @@ body {
 
 @keyframes textGlow {
   from {
-    text-shadow: 0 0 5px #d62828;
+    text-shadow: 0 0 10px #d62828;
   }
   to {
     text-shadow: 0 0 20px #d62828;
   }
 }
 
-/* تأثير التساقط */
+/* تأثيرات التساقط */
 @keyframes fall {
   from {
-    transform: translateY(0);
+    transform: translateY(-100px);
   }
   to {
     transform: translateY(100vh);
@@ -90,19 +91,11 @@ body {
 
 @keyframes bounce {
   0%, 100% {
-    transform: translateY(0);
+    transform: translate(-50%, -50%) scale(1);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translate(-50%, -50%) scale(1.05);
   }
-}
-
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-10px); }
-  50% { transform: translateX(10px); }
-  75% { transform: translateX(-10px); }
-  100% { transform: translateX(0); }
 }
 
 /* تساقط الثلوج */
@@ -114,4 +107,5 @@ body {
   background: white;
   border-radius: 50%;
   animation: fall linear infinite;
+  z-index: 10;
 }

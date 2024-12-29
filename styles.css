@@ -7,6 +7,75 @@ body {
   background: url('https://i.ibb.co/2Wq8kb7/copilot-image-1735475531690.jpg') no-repeat center center fixed;
   background-size: cover;
 }
+/* رسالة الترحيب */
+.welcome {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+  animation: fadeIn 2s ease-in-out;
+  z-index: 1000;
+}
+
+.welcome h1 {
+  font-size: 2rem;
+  animation: textGlow 1.5s infinite alternate;
+}
+
+/* أنوار متساقطة */
+@keyframes lightFall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.light {
+  position: fixed;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  background: #ff0;
+  border-radius: 50%;
+  animation: lightFall linear infinite;
+  z-index: 999;
+}
+
+/* اختفاء رسالة الترحيب */
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes textGlow {
+  from {
+    text-shadow: 0 0 10px #ff0, 0 0 20px #ff0;
+  }
+  to {
+    text-shadow: 0 0 20px #ff0, 0 0 30px #ff0;
+  }
+}
 
 /* الحاوية الرئيسية */
 .container {

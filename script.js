@@ -3,16 +3,25 @@ const welcomeMessage = document.getElementById('welcome-message');
 const welcomeMessageWords = document.querySelectorAll('.word');
 const lightsContainer = document.body;
 
-// إنشاء الأنوار المتساقطة
-function createLight() {
-  const light = document.createElement('div');
-  light.classList.add('light');
-  light.style.left = Math.random() * 100 + 'vw';
-  light.style.animationDuration = Math.random() * 3 + 2 + 's';
-  lightsContainer.appendChild(light);
+// إنشاء الفراشات
+function createButterfly() {
+  const butterfly = document.createElement('div');
+  butterfly.classList.add('butterfly');
+  butterfly.style.left = Math.random() * 100 + 'vw';
+  butterfly.style.top = Math.random() * 100 + 'vh';
+  butterfly.style.animationDuration = Math.random() * 2 + 3 + 's';
+
+  // إضافة صورة فراشة ملونة
+  const colors = ['#ff0000', '#00ff00', '#0000ff', '#ff00ff'];
+  butterfly.style.background = colors[Math.floor(Math.random() * colors.length)];
+  butterfly.style.backgroundImage =
+    'url(https://i.ibb.co/5vHxDs4/christmas-butterfly.png)';
+  butterfly.style.backgroundSize = 'cover';
+
+  lightsContainer.appendChild(butterfly);
 
   setTimeout(() => {
-    light.remove();
+    butterfly.remove();
   }, 5000);
 }
 
@@ -27,10 +36,23 @@ window.addEventListener('load', () => {
   // تشغيل الأنوار
   const lightInterval = setInterval(createLight, 200);
 
-  // إخفاء الرسالة بعد 7 ثوانٍ
+  // إخفاء الكلمات تدريجيًا بعد 7 ثوانٍ
   setTimeout(() => {
-    welcomeMessage.classList.add('hidden');
-    clearInterval(lightInterval);
+    welcomeMessageWords.forEach((word) => {
+      word.style.animation = 'fadeOutWord 1.5s ease-in-out forwards';
+    });
+
+    // بعد اختفاء الكلمات، تشغيل الفراشات
+    setTimeout(() => {
+      for (let i = 0; i < 20; i++) {
+        createButterfly();
+      }
+    }, 1500);
+
+    // إيقاف الأنوار بعد انتهاء الرسالة
+    setTimeout(() => {
+      clearInterval(lightInterval);
+    }, 7000);
   }, 7000);
 });
 // تشغيل الموسيقى عند تدمير رجل الثلج

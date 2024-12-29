@@ -28,21 +28,15 @@ window.addEventListener('load', () => {
   // تشغيل الأنوار
   const lightInterval = setInterval(createLight, 200);
 
-  // إخفاء الكلمات تدريجيًا بعد 7 ثوانٍ
+  // إخفاء النص بعد اكتمال ظهوره مباشرة
   setTimeout(() => {
-    let fadeOutDelay = 0;
-    welcomeMessageWords.forEach((word) => {
-      word.style.animationDelay = `${fadeOutDelay}s`;
-      word.classList.add('fadeOut'); // إضافة تأثير الاختفاء
-      fadeOutDelay += 1.5; // تأخير بين الكلمات
-    });
-
-    // إخفاء الرسالة بعد الانتهاء من الاختفاء
+    welcomeMessage.classList.add('fadeOut'); // إضافة تأثير الاختفاء للنص كله
+    // إخفاء الرسالة بعد انتهاء التأثير
     setTimeout(() => {
       welcomeMessage.classList.add('hidden');
       clearInterval(lightInterval);
-    }, fadeOutDelay * 1000);
-  }, 7000);
+    }, 1000); // التأخير نفس مدة الاختفاء
+  }, delay * 1000); // بعد اكتمال ظهور جميع الكلمات
 });
 
 // تشغيل الموسيقى عند تدمير رجل الثلج

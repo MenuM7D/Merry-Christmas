@@ -31,8 +31,13 @@ body {
 }
 
 #snowman img {
-  clip-path: circle(45% at center); /* تقليل الحواف الزائدة */
-  background: none;
+  display: block; /* لإزالة أي هوامش غير مرغوب فيها */
+  margin: 0 auto; /* التأكد من أن الصورة متمركزة */
+  width: 100%;
+  height: auto;
+  background: none; /* التأكد من عدم وجود خلفية */
+  border: none; /* إزالة أي إطار افتراضي */
+  pointer-events: none; /* منع التفاعل مع الحواف */
 }
 /* الرسالة */
 .hidden {

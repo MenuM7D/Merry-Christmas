@@ -41,8 +41,8 @@ body {
   }
 }
 
-/* تأثير النص - الاختفاء التدريجي */
-@keyframes fadeOutWord {
+/* تأثير الاختفاء التدريجي للنص كله */
+@keyframes fadeOut {
   from {
     opacity: 1;
     transform: translateY(0);
@@ -53,16 +53,15 @@ body {
   }
 }
 
-/* عند الاختفاء التدريجي للكلمات */
+/* عند إخفاء النص بالكامل */
 .fadeOut {
-  animation: fadeOutWord 1s ease-in-out forwards;
+  animation: fadeOut 1s ease-in-out forwards; /* اختفاء كامل للنص بشكل سلس */
 }
 
 /* اختفاء الرسالة */
 .hidden {
   display: none;
 }
-
 /* الحاوية الرئيسية */
 .container {
   position: relative;

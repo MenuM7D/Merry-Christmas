@@ -7,25 +7,25 @@ body {
   background: url('https://i.ibb.co/2Wq8kb7/copilot-image-1735475531690.jpg') no-repeat center center fixed;
   background-size: cover;
 }
-/* رسالة الترحيب */
+/* الرسالة الترحيبية */
 .welcome {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.8);
-  padding: 30px;
-  border-radius: 20px;
   text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
   color: #fff;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
-  animation: fadeIn 2s ease-in-out;
   z-index: 1000;
+  animation: fadeIn 1s ease-in-out;
 }
 
-.welcome h1 {
-  font-size: 2rem;
-  animation: textGlow 1.5s infinite alternate;
+/* الكلمات تظهر تدريجيًا */
+.word {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInWord 1s ease-in-out forwards;
 }
 
 /* أنوار متساقطة */
@@ -54,26 +54,15 @@ body {
   z-index: 999;
 }
 
-/* اختفاء رسالة الترحيب */
-.hidden {
-  display: none;
-}
-
-@keyframes fadeIn {
+/* تأثير النص */
+@keyframes fadeInWord {
   from {
     opacity: 0;
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes textGlow {
-  from {
-    text-shadow: 0 0 10px #ff0, 0 0 20px #ff0;
-  }
-  to {
-    text-shadow: 0 0 20px #ff0, 0 0 30px #ff0;
+    transform: translateY(0);
   }
 }
 

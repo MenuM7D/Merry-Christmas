@@ -56,33 +56,44 @@ body {
   }
 }
 
-/* تأثير الفراشات */
+/* تصميم الفراشات باستخدام CSS */
 .butterfly {
   position: fixed;
-  width: 50px;
-  height: 50px;
-  background-size: cover;
-  animation: fly 5s linear infinite, fadeOut 3s ease-in-out forwards;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff69b4, #ff1493, #ff4500);
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+  animation: fly 5s ease-in-out infinite, fadeOut 3s ease-in-out forwards;
   z-index: 500;
+  opacity: 0;
 }
 
+/* حركات الطيران */
 @keyframes fly {
   0% {
-    transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(50px, -80px) scale(1.2);
   }
   50% {
-    transform: translate(100px, -100px) rotate(45deg);
+    transform: translate(-80px, 50px) scale(0.8);
+  }
+  75% {
+    transform: translate(80px, -30px) scale(1.1);
   }
   100% {
-    transform: translate(-50px, 50px) rotate(-45deg);
+    transform: translate(-50px, 80px) scale(1);
   }
 }
 
+/* تأثير الاختفاء */
 @keyframes fadeOut {
-  from {
+  0% {
     opacity: 1;
   }
-  to {
+  100% {
     opacity: 0;
   }
 }

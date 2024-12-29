@@ -45,6 +45,48 @@ body {
 .hidden {
   display: none;
 }
+/* تأثير اختفاء النصوص */
+@keyframes fadeOutWord {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* تأثير الفراشات */
+.butterfly {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  animation: fly linear infinite, fadeOut 3s ease-in-out forwards;
+  z-index: 500;
+}
+
+@keyframes fly {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(100px, -100px) rotate(45deg);
+  }
+  100% {
+    transform: translate(-50px, 50px) rotate(-45deg);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
 /* الحاوية الرئيسية */
 .container {

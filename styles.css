@@ -17,6 +17,7 @@ body {
   font-size: 2.5rem;
   font-weight: bold;
   color: #fff;
+  text-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 30px #ff0, 0 0 40px #ffd700, 0 0 50px #ffd700, 0 0 60px #ffd700;
   z-index: 1000;
   animation: fadeIn 1s ease-in-out;
 }
@@ -26,32 +27,6 @@ body {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInWord 1s ease-in-out forwards;
-}
-
-/* أنوار متساقطة */
-@keyframes lightFall {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-}
-
-.light {
-  position: fixed;
-  top: -10px;
-  width: 10px;
-  height: 10px;
-  background: #ff0;
-  border-radius: 50%;
-  animation: lightFall linear infinite;
-  z-index: 999;
 }
 
 /* تأثير النص */
@@ -64,6 +39,11 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* اختفاء الرسالة */
+.hidden {
+  display: none;
 }
 
 /* الحاوية الرئيسية */

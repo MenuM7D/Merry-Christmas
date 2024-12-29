@@ -30,11 +30,15 @@ body {
   animation: bounce 2s infinite;
 }
 
-.snowman img {
+#snowman img {
+  display: block; /* لإزالة أي هوامش غير مرغوب فيها */
+  margin: 0 auto; /* التأكد من أن الصورة متمركزة */
   width: 100%;
   height: auto;
+  background: none; /* التأكد من عدم وجود خلفية */
+  border: none; /* إزالة أي إطار افتراضي */
+  pointer-events: none; /* منع التفاعل مع الحواف */
 }
-
 /* الرسالة */
 .hidden {
   display: none;

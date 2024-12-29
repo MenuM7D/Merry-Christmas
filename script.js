@@ -13,7 +13,7 @@ function createButterfly() {
 
   // إضافة صورة فراشة
   butterfly.style.backgroundImage =
-    'url(https://i.ibb.co/5vHxDs4/christmas-butterfly.png)';
+    'url(https://i.ibb.co/Dk8Y6Mk/copilot-image-1735475929266-removebg-preview.png)';
   lightsContainer.appendChild(butterfly);
 
   setTimeout(() => {

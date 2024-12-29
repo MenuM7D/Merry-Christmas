@@ -29,7 +29,7 @@ body {
   animation: fadeInWord 1s ease-in-out forwards;
 }
 
-/* تأثير النص */
+/* تأثير النص - الظهور التدريجي */
 @keyframes fadeInWord {
   from {
     opacity: 0;
@@ -39,6 +39,23 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* تأثير النص - الاختفاء التدريجي */
+@keyframes fadeOutWord {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* عند الاختفاء التدريجي للكلمات */
+.fadeOut {
+  animation: fadeOutWord 1s ease-in-out forwards;
 }
 
 /* اختفاء الرسالة */

@@ -1,4 +1,5 @@
 // عرض رسالة الترحيب
+const welcomeMessage = document.getElementById('welcome-message');
 const welcomeMessageWords = document.querySelectorAll('.word');
 const lightsContainer = document.body;
 
@@ -26,8 +27,9 @@ window.addEventListener('load', () => {
   // تشغيل الأنوار
   const lightInterval = setInterval(createLight, 200);
 
-  // إخفاء الأنوار بعد 5 ثوانٍ
+  // إخفاء الرسالة بعد 7 ثوانٍ
   setTimeout(() => {
+    welcomeMessage.classList.add('hidden');
     clearInterval(lightInterval);
   }, 7000);
 });

@@ -19,7 +19,6 @@ body {
   color: #fff;
   text-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 30px #ff0, 0 0 40px #ffd700, 0 0 50px #ffd700, 0 0 60px #ffd700;
   z-index: 1000;
-  animation: fadeIn 1s ease-in-out;
 }
 
 /* الكلمات تظهر تدريجيًا */
@@ -29,7 +28,12 @@ body {
   animation: fadeInWord 1s ease-in-out forwards;
 }
 
-/* تأثير النص */
+/* الكلمات تختفي تدريجيًا */
+.word.fade-out {
+  animation: fadeOutWord 1.5s ease-in-out forwards;
+}
+
+/* تأثير النصوص */
 @keyframes fadeInWord {
   from {
     opacity: 0;
@@ -41,11 +45,6 @@ body {
   }
 }
 
-/* اختفاء الرسالة */
-.hidden {
-  display: none;
-}
-/* تأثير اختفاء النصوص */
 @keyframes fadeOutWord {
   from {
     opacity: 1;
@@ -63,7 +62,7 @@ body {
   width: 50px;
   height: 50px;
   background-size: cover;
-  animation: fly linear infinite, fadeOut 3s ease-in-out forwards;
+  animation: fly 5s linear infinite, fadeOut 3s ease-in-out forwards;
   z-index: 500;
 }
 
@@ -87,7 +86,6 @@ body {
     opacity: 0;
   }
 }
-
 /* الحاوية الرئيسية */
 .container {
   position: relative;

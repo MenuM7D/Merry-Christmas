@@ -1,4 +1,4 @@
-// تشغيل الموسيقى في الخلفية
+// تشغيل الموسيقى عند تدمير رجل الثلج
 const music = document.getElementById('background-music');
 music.volume = 0.3;
 
@@ -37,10 +37,11 @@ snowman.addEventListener('click', () => {
     snowman.style.animation = '';
   }, 500);
 
-  // إذا وصلت النقرات إلى 5، اختفِ وأظهر الرسالة
+  // إذا وصلت النقرات إلى 5، اختفِ وأظهر الرسالة وشغّل الموسيقى
   if (clicks >= 5) {
     snowman.style.display = 'none';
     greeting.classList.remove('hidden');
+    music.play(); // تشغيل الأغنية
   }
 });
 

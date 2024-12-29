@@ -9,15 +9,11 @@ function createButterfly() {
   butterfly.classList.add('butterfly');
   butterfly.style.left = Math.random() * 100 + 'vw';
   butterfly.style.top = Math.random() * 100 + 'vh';
-  butterfly.style.animationDuration = Math.random() * 2 + 3 + 's';
+  butterfly.style.animationDuration = Math.random() * 3 + 3 + 's';
 
-  // إضافة صورة فراشة ملونة
-  const colors = ['#ff0000', '#00ff00', '#0000ff', '#ff00ff'];
-  butterfly.style.background = colors[Math.floor(Math.random() * colors.length)];
+  // إضافة صورة فراشة
   butterfly.style.backgroundImage =
     'url(https://i.ibb.co/5vHxDs4/christmas-butterfly.png)';
-  butterfly.style.backgroundSize = 'cover';
-
   lightsContainer.appendChild(butterfly);
 
   setTimeout(() => {
@@ -25,35 +21,29 @@ function createButterfly() {
   }, 5000);
 }
 
-// عرض الكلمات تدريجيًا
+// تشغيل الأنوار مع الرسالة
 window.addEventListener('load', () => {
   let delay = 0;
-  welcomeMessageWords.forEach((word, index) => {
+
+  // عرض الكلمات تدريجيًا
+  welcomeMessageWords.forEach((word) => {
     word.style.animationDelay = `${delay}s`;
-    delay += 1.5; // تأخير بين الكلمات
+    delay += 1.5;
   });
 
-  // تشغيل الأنوار
-  const lightInterval = setInterval(createLight, 200);
-
-  // إخفاء الكلمات تدريجيًا بعد 7 ثوانٍ
+  // اختفاء الكلمات تدريجيًا بعد ظهورها
   setTimeout(() => {
     welcomeMessageWords.forEach((word) => {
-      word.style.animation = 'fadeOutWord 1.5s ease-in-out forwards';
+      word.classList.add('fade-out');
     });
 
-    // بعد اختفاء الكلمات، تشغيل الفراشات
+    // عرض الفراشات بعد اختفاء النصوص
     setTimeout(() => {
       for (let i = 0; i < 20; i++) {
         createButterfly();
       }
     }, 1500);
-
-    // إيقاف الأنوار بعد انتهاء الرسالة
-    setTimeout(() => {
-      clearInterval(lightInterval);
-    }, 7000);
-  }, 7000);
+  }, delay * 1000);
 });
 // تشغيل الموسيقى عند تدمير رجل الثلج
 const music = document.getElementById('background-music');

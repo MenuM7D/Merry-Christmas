@@ -1,3 +1,33 @@
+// عرض رسالة الترحيب
+const welcomeMessage = document.getElementById('welcome-message');
+const lightsContainer = document.body;
+
+// إنشاء الأنوار المتساقطة
+function createLight() {
+  const light = document.createElement('div');
+  light.classList.add('light');
+  light.style.left = Math.random() * 100 + 'vw';
+  light.style.animationDuration = Math.random() * 3 + 2 + 's';
+  lightsContainer.appendChild(light);
+
+  setTimeout(() => {
+    light.remove();
+  }, 5000);
+}
+
+// عرض رسالة الترحيب مع الأنوار
+window.addEventListener('load', () => {
+  welcomeMessage.classList.remove('hidden');
+
+  // تشغيل الأنوار
+  const lightInterval = setInterval(createLight, 200);
+
+  // إخفاء الرسالة والأنوار بعد 5 ثوانٍ
+  setTimeout(() => {
+    welcomeMessage.classList.add('hidden');
+    clearInterval(lightInterval);
+  }, 5000);
+});
 // تشغيل الموسيقى عند تدمير رجل الثلج
 const music = document.getElementById('background-music');
 music.volume = 0.3;

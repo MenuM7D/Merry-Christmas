@@ -4,47 +4,33 @@ const welcomeMessageWords = document.querySelectorAll('.word');
 const lightsContainer = document.body;
 
 // إنشاء الفراشات
+// إنشاء فراشة جديدة
 function createButterfly() {
   const butterfly = document.createElement('div');
   butterfly.classList.add('butterfly');
-  butterfly.style.left = Math.random() * 100 + 'vw';
-  butterfly.style.top = Math.random() * 100 + 'vh';
-  butterfly.style.animationDuration = Math.random() * 3 + 3 + 's';
+  butterfly.style.left = Math.random() * 100 + 'vw'; // تحديد مكان عشوائي أفقياً
+  butterfly.style.top = Math.random() * 100 + 'vh'; // تحديد مكان عشوائي عمودياً
+  butterfly.style.animationDuration = Math.random() * 3 + 3 + 's'; // وقت عشوائي للطيران
 
-  // إضافة صورة فراشة
-  butterfly.style.backgroundImage =
-    'url(https://i.ibb.co/Dk8Y6Mk/copilot-image-1735475929266-removebg-preview.png)';
-  lightsContainer.appendChild(butterfly);
+  document.body.appendChild(butterfly);
 
-  setTimeout(() => {
+  // حذف الفراشة بعد انتهاء تأثير الطيران
+  butterfly.addEventListener('animationend', () => {
     butterfly.remove();
-  }, 5000);
+  });
 }
 
-// تشغيل الأنوار مع الرسالة
-window.addEventListener('load', () => {
-  let delay = 0;
+// إنشاء مجموعة من الفراشات
+function releaseButterflies(count = 20) {
+  for (let i = 0; i < count; i++) {
+    createButterfly();
+  }
+}
 
-  // عرض الكلمات تدريجيًا
-  welcomeMessageWords.forEach((word) => {
-    word.style.animationDelay = `${delay}s`;
-    delay += 1.5;
-  });
-
-  // اختفاء الكلمات تدريجيًا بعد ظهورها
-  setTimeout(() => {
-    welcomeMessageWords.forEach((word) => {
-      word.classList.add('fade-out');
-    });
-
-    // عرض الفراشات بعد اختفاء النصوص
-    setTimeout(() => {
-      for (let i = 0; i < 20; i++) {
-        createButterfly();
-      }
-    }, 1500);
-  }, delay * 1000);
-});
+// عرض الفراشات بعد اختفاء النصوص
+setTimeout(() => {
+  releaseButterflies();
+}, 7000); // بعد انتهاء النصوص بـ 7 ثوانٍ
 // تشغيل الموسيقى عند تدمير رجل الثلج
 const music = document.getElementById('background-music');
 music.volume = 0.3;
